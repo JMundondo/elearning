@@ -18,7 +18,10 @@ class RegisterController extends Controller
         return view('auth.register');
         
     }
-    protected function validator(array $data)
+   
+    
+    
+     protected function validator(array $data)
 
     {
         return Validator::make($data, [
@@ -37,24 +40,18 @@ class RegisterController extends Controller
     
     protected function createTeacher(Request $request)
     {
+       
         
         
-        return Teacher::create([
+     return Teacher::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
         $methods = Teacher::all();
            dd($methods);
-    }
-    /*protected function createTeacher(array $data)
-    {
-        return Teacher::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }*/
+     }
+    
 }
 
 

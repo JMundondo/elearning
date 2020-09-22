@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Services\Auth\TeacherGuard;
+use App\Services\Auth\StudentGuard;
+use App\Services\Auth\AdminGuard;
+
+use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +30,20 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Auth::extend('admin', function ($app, $name, array $config) {
+            // Return an instance of Illuminate\Contracts\Auth\Guard...
+
+            return new AdminGuard(Auth::createUserProvider($config['provider']));
+        });
+        Auth::extend('student', function ($app, $name, array $config) {
+            // Return an instance of Illuminate\Contracts\Auth\Guard...
+
+            return new StudentGuard(Auth::createUserProvider($config['provider']));
+        });
+        Auth::extend('teacher', function ($app, $name, array $config) {
+            // Return an instance of Illuminate\Contracts\Auth\Guard...
+
+            return new TeacherGuard(Auth::createUserProvider($config['provider']));
+        });
     }
 }

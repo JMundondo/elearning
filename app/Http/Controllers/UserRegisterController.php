@@ -30,12 +30,17 @@ class UserRegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function createStudent(array $data)
+    protected function createStudent(Request $request)
+
     {
+       
         return Student::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
-    }
+        $methods = Stundent::all();
+           dd($methods);
+     }
+    
 }

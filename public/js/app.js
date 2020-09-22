@@ -49744,7 +49744,9 @@ var app = new Vue({
   el: '#app',
   data: {
     buttonstate: true,
-    student: false
+    student: false,
+    showteacher: false,
+    showstudent: false
   },
   methods: {
     changestate: function changestate() {
@@ -49752,6 +49754,12 @@ var app = new Vue({
     },
     changestudent: function changestudent() {
       return this.student = !this.student;
+    },
+    showTeacher: function showTeacher() {
+      return this.showteacher = !this.showteacher;
+    },
+    showStudent: function showStudent() {
+      return this.showstudent = !this.showstudent;
     }
   }
 });

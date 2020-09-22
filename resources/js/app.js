@@ -32,6 +32,8 @@ const app = new Vue({
     data: {
         buttonstate:true,
         student:false,
+        showteacher:false,
+        showstudent:false,
       },
   
       methods: {
@@ -40,6 +42,12 @@ const app = new Vue({
           },
           changestudent:function (){
               return this.student = !this.student
+          },
+          showTeacher: function(){
+              return this.showteacher = !this.showteacher
+          },
+          showStudent: function(){
+              return this.showstudent = !this.showstudent
           },
       }
 });

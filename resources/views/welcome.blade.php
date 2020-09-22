@@ -69,8 +69,8 @@
                 <div class="top-right links">
                     
                     <a href="{{ url('/home') }}">Home</a>
-                    
-                     <a href="{{ route('register') }}">Register</a>
+                    <a href="{{route('login')}}">login</a>
+                    <a href="{{ route('register') }}">Register</a>
                      
                         
                     
