@@ -23,17 +23,28 @@ Route::Post('/', 'RegisterController@createTeacher')->name('teacherRegister');
 
 Route::Post('/register', 'UserRegisterController@createStudent')->name('registerStudent');
 // show login form
-Route::get('/login', 'StudentLoginController@index')->name('login');
+Route::get('/login', 'Student\Auth\StudentLoginController@index')->name('login');
 
 
 // student login routes
-Route::get('/login/student', 'TeacherLoginController@show')->name('student_dashboard');
+Route::get('/login/student', 'Teacher\Auth\TeacherLoginController@show')->name('student.dashboard');
 
-Route::Post('/login', 'StudentLoginController@authenticate')->name('loginStudent');
+Route::Post('/login', 'Student\Auth\StudentLoginController@authenticate')->name('loginStudent');
+
+Route::prefix('/Student')->name('student.')->namespace('Student')->group(function(){
+    //All theteacher routes will be defined here...
+  });
 
 
 
 // teacher login routes
-Route::get('/login/teacher', 'TeacherLoginController@show')->name('teacher_dashboard');
+Route::get('/login/teacher', 'Teacher\Auth\TeacherLoginController@show')->name('teacher.dashboard');
 
-Route::Post('/login/teacher', 'TeacherLoginController@authenticate')->name('loginTeacher');
+Route::Post('/login/teacher', 'Teacher\Auth\TeacherLoginController@authenticate')->name('loginTeacher');
+
+Route::prefix('teacher')->name('teacher.')->namespace('Teacher')->group(function(){
+
+
+    //All theteacher routes will be defined here...
+  });
+// student routes middleware 
