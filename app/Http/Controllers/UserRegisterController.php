@@ -19,6 +19,7 @@ class UserRegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'class' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -36,6 +37,7 @@ class UserRegisterController extends Controller
        
         return Student::create([
             'name' => $request->name,
+            'class' => $request->class,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
