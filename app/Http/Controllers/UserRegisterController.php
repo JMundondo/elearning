@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Student;
+use App\Form;
 
 use Illuminate\Http\Request;
 
@@ -34,15 +35,39 @@ class UserRegisterController extends Controller
     protected function createStudent(Request $request)
 
     {
+        
+        
+        $form_id = 0;
+        $form_id++;
+
+    
+        
+        
+        
+        
+        
+        $form = Form::create([
+
+        'name' => $request->class,
+    ]);
        
-        return Student::create([
+        $student = Student::create([
             'name' => $request->name,
-            'class' => $request->class,
+            'form_name' => $request->class,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'form_id'=> $form_id,
         ]);
-        $methods = Stundent::all();
-           dd($methods);
-     }
+
+        
+       // $methods = Student::all();
+        $showFormName = Form::Where('name','LiKE',"%{form3}%")
+        ->with('students')->get();
+        dd($showFormName);
+
+
+       // dd($methods);
+    
+    }
     
 }

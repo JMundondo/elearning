@@ -16,12 +16,17 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('class');
+            $table->string('form_name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+           
             $table->string('password');
+          
+           
+            $table->unsignedBigInteger('form_id');
+
+            $table->foreign('form_id')->references('id')->on('forms');
             $table->rememberToken();
-            
+            $table->timestamp('email_verified_at')->nullable();
 
             $table->timestamps();
         });
@@ -34,6 +39,11 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
+       // Schema::dropIfExists('students');
+        /**Schema::table('students',function(Blueprint $table){
+            $table->dropForeign(['form_id']);
+            $table->dropColumn('form_id');
+        });*/
         Schema::dropIfExists('students');
     }
 }
