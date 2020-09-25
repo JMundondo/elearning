@@ -131,14 +131,39 @@
                                                        @enderror
                                            </div>
                                        </div>
-                                <div class="form-group row">
+
+                                      
+                                      
+                         <div class="form-group row">
+                                        <label for="class" 
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Class') }}</label>
+                           
+                                   <div class="col-md-6">
+                                        <input id="class" type="text" 
+                                                    class="form-control @error('class') is-invalid @enderror" 
+                                                   name="class" value="{{ old('class') }}" required autocomplete="class" autofocus>
+                           
+                                                     @error('class')
+                                                   <span class="invalid-feedback" role="alert">
+                                                                   <strong>{{ $message }}</strong>
+                                                        </span>
+                                                           @enderror
+                                               </div>
+                                           </div>
+                                       {{--<div class="form-group row">
                                        <label for="class" 
                                     class="col-md-4 col-form-label text-md-right">{{ __('Class') }}</label>
                        
                                 <div class="col-md-6">
-                                    <input id="class" type="text" 
-                                                class="form-control @error('class') is-invalid @enderror" 
-                                               name="class" value="{{ old('class') }}" required autocomplete="class" autofocus>
+                                    <select class="selectpicker " id="class"  type="select"
+                                      
+                                   name="forms[]" value="{{ old('class') }}" required autocomplete="class" autofocus multiple>
+           
+                                    
+                                <option value="@{{form}}" v-for="form in forms" >@{{form}} </option>
+                                       
+
+                                    </select>
                        
                                                  @error('class')
                                                <span class="invalid-feedback" role="alert">
@@ -146,7 +171,8 @@
                                                     </span>
                                                        @enderror
                                            </div>
-                                       </div>
+                                       </div>--}}
+                                
                        
                                                <div class="form-group row">
                                                    <label for="email" 

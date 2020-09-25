@@ -37,31 +37,34 @@ class UserRegisterController extends Controller
     {
         
         
-        $form_id = 0;
-        $form_id++;
-
-    
-        
-        
-        
-        
-        
-        $form = Form::create([
+         $form = Form::create([
 
         'name' => $request->class,
     ]);
+      
+    
+    $form = Form::latest()->first();
+
+      $student = $form->students()->create([
+        'name' => $request->name,
+        'form_name' => $request->class,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        
+
+      ]);
        
-        $student = Student::create([
+      /*  $student = Student::create([
             'name' => $request->name,
             'form_name' => $request->class,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'form_id'=> $form_id,
-        ]);
+        ]);*/
 
         
        // $methods = Student::all();
-        $showFormName = Form::Where('name','LiKE',"%{form3}%")
+        $showFormName = Form::Where('id','>','0')
         ->with('students')->get();
         dd($showFormName);
 

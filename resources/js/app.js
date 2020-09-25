@@ -34,6 +34,14 @@ const app = new Vue({
         student:false,
         showteacher:false,
         showstudent:false,
+        forms:['form 1','form 2','form 3 sciences','form 3 arts','form 3 commercials',
+        'form 4 sciences','form 4 arts','form 4 commercials',
+        'L6 sciences','L6 arts','L6 commercials',
+        'U6 sciences','U6 arts','U6 commercials'
+                 
+        
+    
+    ]
       },
   
       methods: {
