@@ -14,4 +14,9 @@ class Form extends Model
     {
         return $this->hasMany('App\Student');
     }
+    
+    public function teachers(){
+
+        return $this->belongsToMany('App\Teacher');
+    }
 }

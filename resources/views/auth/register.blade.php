@@ -134,7 +134,7 @@
 
                                       
                                       
-                         <div class="form-group row">
+                       <div class="form-group row">
                                         <label for="class" 
                                         class="col-md-4 col-form-label text-md-right">{{ __('Class') }}</label>
                            
@@ -150,12 +150,12 @@
                                                            @enderror
                                                </div>
                                            </div>
-                                       {{--<div class="form-group row">
+                                     {{--  <div class="form-group row">
                                        <label for="class" 
                                     class="col-md-4 col-form-label text-md-right">{{ __('Class') }}</label>
                        
                                 <div class="col-md-6">
-                                    <select class="selectpicker " id="class"  type="select"
+                                    <select class="selectpicker form-control " id="class"  type="select"
                                       
                                    name="forms[]" value="{{ old('class') }}" required autocomplete="class" autofocus multiple>
            

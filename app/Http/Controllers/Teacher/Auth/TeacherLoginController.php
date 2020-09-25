@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Form;
 
 
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -63,8 +64,9 @@ private function validator(Request $request)
     }
    
     public function show(){
+       $forms = Form::all();
 
-        return view('dashboard.teacherdashboard');
+        return view('dashboard.teacherdashboard', ['forms'=>$forms]);
     }
 }
 
