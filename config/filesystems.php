@@ -80,6 +80,20 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('posts') => storage_path('forms'),
+        public_path('posts') => storage_path('app/public/form1'),
+        public_path('posts') => storage_path('app/public/form2'),
+
+        public_path('posts') => storage_path('app/public/form3art'),
+        public_path('posts') => storage_path('app/public/form3sci'),
+        public_path('posts') => storage_path('app/public/form4art'),
+        public_path('posts') => storage_path('app/public/form4sci'),
+        public_path('posts') => storage_path('app/public/form5comm'),
+        public_path('posts') => storage_path('app/public/form5sci'), 
+        public_path('posts') => storage_path('app/public/form5art'),
+        public_path('posts') => storage_path('app/public/form6art'),
+        public_path('posts') => storage_path('app/public/form6sci'),
+        public_path('posts') => storage_path('app/public/form6comm'),
     ],
 
 ];

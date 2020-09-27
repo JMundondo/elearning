@@ -44,14 +44,15 @@ class RegisterController extends Controller
        
         
         
-     return Teacher::create([
+     $teacher = Teacher::create([
             'name' => $request->name,
             'subjects' => $request->subjects,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $methods = Teacher::all();
-           dd($methods);
+
+        return redirect()->route('login');
+        
      }
     
 }

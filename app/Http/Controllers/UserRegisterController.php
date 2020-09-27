@@ -54,23 +54,8 @@ class UserRegisterController extends Controller
 
       ]);
        
-      /*  $student = Student::create([
-            'name' => $request->name,
-            'form_name' => $request->class,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'form_id'=> $form_id,
-        ]);*/
-
-        
-       // $methods = Student::all();
-        $showFormName = Form::Where('id','>','0')
-        ->with('students')->get();
-        dd($showFormName);
-
-
-       // dd($methods);
-    
+      
+       return redirect()->route('login');   
     }
     
 }

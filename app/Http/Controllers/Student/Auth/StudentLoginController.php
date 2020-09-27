@@ -60,7 +60,11 @@ class StudentLoginController extends Controller
             ->route('login')
             ->with('status','Teacher has been logged out!');
         }
-       
+        public function show(){
+            
+     
+             return view('dashboard.studentdashboard');
+         }
 
 
 
