@@ -18,7 +18,7 @@ class CreateFormsTable extends Migration
             $table->string('name');
             $table->index('name');
 
-            $table->timestamps();
+            
         });
     }
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Student;
 use App\Form;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -37,22 +38,34 @@ class UserRegisterController extends Controller
     {
         
         
-         $form = Form::create([
-
-        'name' => $request->class,
-    ]);
+     $name =  $request->class;
+    
       
     
-    $form = Form::latest()->first();
+    //$form = Form::where('name', 'LIKE', "%{$form_name}%") ->first();
+    //$form = Form::where('name',$name) ->first();
+   // $model_name = 'App\Form';
+    //$form = $model_name::where('name', $name)->first();
+    $form =  Form::whereName( $name)->first();
+    $student= new Student([
+    'name' => $request->name,
+    'form_name' => $request->class,
+    'email' => $request->email,
+    'password' => Hash::make($request->password),]);
 
-      $student = $form->students()->create([
+     $form->students()->save($student);
+  
+   // dd($form);
+
+    /** $student = $form->students()->create([
         'name' => $request->name,
         'form_name' => $request->class,
         'email' => $request->email,
         'password' => Hash::make($request->password),
         
 
-      ]);
+      ]); 
+    */  
        
       
        return redirect()->route('login');   
