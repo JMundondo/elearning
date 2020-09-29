@@ -16,7 +16,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('form_name');
+            $table->string('form_name')->nullable();
             $table->string('email')->unique();
            
             $table->string('password');
@@ -45,5 +45,6 @@ class CreateStudentsTable extends Migration
             $table->dropColumn('form_id');
         });*/
         Schema::dropIfExists('students');
+        
     }
 }
