@@ -35,17 +35,47 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
       // $path = $request->post->store('form1');
      // $path = Storage::putFile('forms',$request->file('post'));
+        
+  
+    $request->validate([
+    'file' => 'required|max:2048'
+    ]);
 
-       $post = Post::create([
+         $fileModel = new Post;
+         if($request->hasFile('file')){
+            $file = $request->file('file');
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+    
+            $fileModel->name = time().'_'.$request->file->getClientOriginalName();
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->title =  $request->title;
+            $fileModel->subject =  $request->subject;
+            $fileModel->form_name =  $request->class;
+            $fileModel->save();
+
+         }
+      
+    
+
+        
+    /** $post = Post::create([
         'title' => $request->title,
         'subject' => $request->subject,
         'form_name'=>$request->class,
-        'file' => $request->post,
+
         
-    ]);
+        
+    ]); */  
+
+        return back()
+        ->with('success','File has been uploaded.')
+        ->with('file');
+    
     }
 
     /**

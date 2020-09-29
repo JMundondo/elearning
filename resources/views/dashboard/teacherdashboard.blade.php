@@ -11,8 +11,23 @@
       
       <div class="container">
         <div class="card card-body jumbotron">
-          <form method="POST" action="{{ route('posts.store') }}">
+          <form method="post" action="{{ route('posts.store') }}"  enctype="multipart/form-data">
         @csrf
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <strong>{{ $message }}</strong>
+        </div>
+      @endif
+
+      @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
  
     <div class="form-group row">
               <label for="title" 
@@ -69,14 +84,16 @@
                                            </div>
                                        </div>
  
-                         <div class="form-group row">
+                        <div class="form-group row">
                              <label for="file" 
                              class="col-md-4 col-form-label text-md-right">{{ __('POST FILE') }}</label>
  
                              <div class="col-md-6">
-                                 <input id="file" type="file" 
+                             {{--<input id="file" type="file" 
                                  class="form-control-file @error('file') is-invalid @enderror" 
-                                 name="file" value="{{ old('file') }}" required autocomplete="file">
+                                 name="file" value="{{ old('file') }}" required autocomplete="file">--}}
+                                 <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                                 <label class="custom-file-label" for="chooseFile">Select file</label>
  
                                  @error('file')
                                      <span class="invalid-feedback" role="alert">
@@ -84,7 +101,21 @@
                                      </span>
                                  @enderror
                              </div>
-                         </div>
+                         </div> 
+                        
+                      {{--<div class="form-group row">
+                        <label for="file" 
+                        class="col-md-4 col-form-label text-md-right">{{ __('POST FILE') }}</label>
+                              <div class="custom-file  col-md-6" >
+
+                                 <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                                  <label class="custom-file-label" for="chooseFile">Select file</label>
+                             </div>
+                             </div>--}} 
+                         
+                        
+                    
+                         
  
                          <div class="form-group row mb-0">
                              <div class="col-md-6 offset-md-4">
