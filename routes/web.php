@@ -53,5 +53,5 @@ Route::Post('/login', 'Teacher\Auth\TeacherLoginController@authenticate')->name(
   
 
  // students form routes 
- Route::get('form/{form}','FormController@show');
+ Route::get('student/{form}','FormController@form')->name('showfrom');
  
