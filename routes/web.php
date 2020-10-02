@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', function () {
+
+    return view('home');
+});
+
+
 //show register form
 Route::get('/register', 'RegisterController@index')->name('register');
 // tempo solution
@@ -24,6 +30,7 @@ Route::Post('/', 'RegisterController@createTeacher')->name('teacherRegister');
 Route::Post('/register', 'UserRegisterController@createStudent')->name('registerStudent');
 // show login form
 Route::get('/login', 'Student\Auth\StudentLoginController@index')->name('login');
+Route::get('/logout','LogoutController@index' )->name('logout');
 
 
 // student login routes
@@ -54,4 +61,7 @@ Route::Post('/login', 'Teacher\Auth\TeacherLoginController@authenticate')->name(
 
  // students form routes 
  Route::get('student/{form}','FormController@form')->name('showfrom');
+ Route::get('/{post}','FormController@download')->name('download');
+
+
  

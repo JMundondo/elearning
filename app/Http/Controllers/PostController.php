@@ -34,7 +34,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
 
     {
       // $path = $request->post->store('form1');
@@ -49,10 +49,12 @@ class PostController extends Controller
          if($request->hasFile('file')){
             $file = $request->file('file');
             $fileName = time().'_'.$file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $filePath = $request->file('file')->storeAs('uploads', $fileName,'public');
+            $storagePath = storage_path();
     
             $fileModel->name = time().'_'.$request->file->getClientOriginalName();
-            $fileModel->file_path = '/storage/' . $filePath;
+            //$fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->file_path = $storagePath.$filePath;
             $fileModel->title =  $request->title;
             $fileModel->subject =  $request->subject;
             $fileModel->form_name =  $request->class;
@@ -63,18 +65,32 @@ class PostController extends Controller
     
 
         
-    /** $post = Post::create([
-        'title' => $request->title,
-        'subject' => $request->subject,
-        'form_name'=>$request->class,
+    
 
-        
-        
-    ]); */  
+        return back()
+        ->with('success','File has been uploaded.')
+        ->with('file'); 
+
+        /**if ($request->hasFile('file')) {
+            if ($request->file('file')->isValid()) {
+                $file = $request->file('file');
+                $request->file('file')->move(public_path().'/uploads/', $file->getClientOriginalName());
+            }
+        }
+        $fileModel = new Post;
+        $fileModel->name = time().'_'.$request->file->getClientOriginalName();
+        $fileModel->file_path = public_path().'/uploads/';
+        $fileModel->title =  $request->title;
+        $fileModel->subject =  $request->subject;
+        $fileModel->form_name =  $request->class;
+        $fileModel->save();
 
         return back()
         ->with('success','File has been uploaded.')
         ->with('file');
+    **/
+       // $list_of_files = \File::allFiles(public_path().'/uploads/');
+    
     
     }
 
