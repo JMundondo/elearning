@@ -71,25 +71,7 @@ class PostController extends Controller
         ->with('success','File has been uploaded.')
         ->with('file'); 
 
-        /**if ($request->hasFile('file')) {
-            if ($request->file('file')->isValid()) {
-                $file = $request->file('file');
-                $request->file('file')->move(public_path().'/uploads/', $file->getClientOriginalName());
-            }
-        }
-        $fileModel = new Post;
-        $fileModel->name = time().'_'.$request->file->getClientOriginalName();
-        $fileModel->file_path = public_path().'/uploads/';
-        $fileModel->title =  $request->title;
-        $fileModel->subject =  $request->subject;
-        $fileModel->form_name =  $request->class;
-        $fileModel->save();
-
-        return back()
-        ->with('success','File has been uploaded.')
-        ->with('file');
-    **/
-       // $list_of_files = \File::allFiles(public_path().'/uploads/');
+     
     
     
     }
