@@ -19,7 +19,7 @@
                         <h5>{{$post->subject}} </h5>
 
                         <h6> {{$post->name}}</h6>
-                        <a href="{{ url('/1') }}" class="btn btn-success">download</a>
+                        <a href="{{ url('/'.basename($post->id)) }}" class="btn btn-success">download</a>
                   </div>
                 </li>
 
@@ -27,11 +27,7 @@
                 
               </ul>
             @endforeach
-            <ul>
-              @foreach($posts as $post)
-                  <li><a href="{{ asset('uploads/' . basename($post->name)) }}">{{ basename($post->name) }}</a></li>
-              @endforeach
-          </ul>
+           
             
 
 
