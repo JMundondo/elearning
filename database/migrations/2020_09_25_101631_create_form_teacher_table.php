@@ -14,8 +14,8 @@ class CreateFormTeacherTable extends Migration
     public function up()
     {
         Schema::create('form_teacher', function (Blueprint $table) {
-           // $table->id();
-           $table->increments('id');
+            $table->id();
+           
             $table->unsignedBigInteger('form_id');
             $table->unsignedBigInteger('teacher_id');
             $table->timestamps();
