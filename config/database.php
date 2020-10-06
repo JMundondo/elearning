@@ -2,8 +2,16 @@
 
 use Illuminate\Support\Str;
 
-$DATABASE_URL=parse_url('postgres://wesmvnptvsstbb:6f02ff15df55db6ae0610c2dfd2425578888d3e37a0b6b28598b239b4663effb@ec2-54-90-68-208.compute-1.amazonaws.com:5432/dbb6nv5lnd5hom
-');
+//$DATABASE_URL=parse_url('postgres://wesmvnptvsstbb:6f02ff15df55db6ae0610c2dfd2425578888d3e37a0b6b28598b239b4663effb@ec2-54-90-68-208.compute-1.amazonaws.com:5432/dbb6nv5lnd5hom
+//');
+$url = parse_url(getenv("postgres://kzuraxztlguxva:63e18698da95325ac0673632a1745ee54be1721cb59b0ba60c95f2f9accab2fb@ec2-52-21-0-111.compute-1.amazonaws.com:5432/ddomanvin8om9p
+
+"));
+
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
 
 return [
 
@@ -69,11 +77,11 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => $host,
             'port' => env('DB_PORT', '5432'),
-            'database' => itrim($DATABASE_URL["path"],"/"),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
