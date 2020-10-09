@@ -63,6 +63,18 @@ nav,
 section {
   display: block;
 }
+.carousel-inner > .item > img {
+  width:64px;
+  height:36px;
+}
+.carousel {
+  width:640px;
+  height:360px;
+}
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  width:64px;
+  height:36px;
+}
 
 body {
   margin: 0;

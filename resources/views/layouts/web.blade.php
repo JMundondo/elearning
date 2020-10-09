@@ -16,14 +16,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-       .img-thumnail{
-        width: 20px
 
-       }
-    </style>
+    <!-- Styles -->
+    <style>.carousel-inner > .item > img { width:100%; height:570px; } </style>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
@@ -46,35 +43,23 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
+                        <!-- web pages links -->
+                        <ul class="nav nav-tabs">
                             <li class="nav-item">
-                               <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                              <a class="nav-link " href="{{ route('home') }}">Home</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ route('news') }}">News</a>
                             </li>
-                        @endguest
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ route('aboutUs') }}">About US</a>
+                            </li>
+
+                            <li class="nav-item">
+                              <a class="nav-link " href="{{ route('welcome') }}">E-Learning</a>
+                            </li>
+                          </ul>
+                          
                     </ul>
                 </div>
             </div>
@@ -85,4 +70,29 @@
         </main>
     </div>
 </body>
+<style type="text/css">
+    .slide-show-render-full .slide-image {
+    height: 100%;
+    max-height: 62px;
+    max-width: 110px;
+    }
+    
+    .slide-show-render-full .slide-content {
+    height: 62px;
+    width: 110px;
+    }
+    
+    .slide-show-render .slides {
+    height: 62px;
+    }
+    
+    .slide-show-render.slide-show {
+    height: 62px;
+    margin: 0 0 20px -60px;
+    }
+    
+    .slide-show {
+    width: 110px;
+    }
+    </style>
 </html>

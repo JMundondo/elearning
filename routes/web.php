@@ -15,11 +15,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 Route::get('/home', function () {
 
-    return view('home');
-});
+    return view('website.home');
+})->name('home');
+
+
+Route::get('/News', function () {
+
+    return view('website.news');
+})->name('news');
+
+
+Route::get('/About Us', function () {
+
+    return view('website.about_us');
+})->name('aboutUs');
+
+
 
 
 //show register form
