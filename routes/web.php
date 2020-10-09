@@ -45,7 +45,7 @@ Route::Post('/login/teacher', 'Student\Auth\StudentLoginController@authenticate'
 
 
 // teacher login routes
-Route::get('/teacher', 'Teacher\Auth\TeacherLoginController@show')->name('teacher.dashboard');
+Route::get('/teacher', 'Teacher\Auth\TeacherLoginController@show')->name('teacher.dashboard')->middleware('auth:teacher');
 
 Route::Post('/login', 'Teacher\Auth\TeacherLoginController@authenticate')->name('loginTeacher');
 
