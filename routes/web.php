@@ -30,11 +30,11 @@ Route::Post('/', 'RegisterController@createTeacher')->name('teacherRegister');
 Route::Post('/register', 'UserRegisterController@createStudent')->name('registerStudent');
 // show login form
 Route::get('/login', 'Student\Auth\StudentLoginController@index')->name('login');
-Route::get('/logout','LogoutController@index' )->name('logout');
+Route::Post('/logout','LogoutController@index' )->name('logout');
 
 
 // student login routes
-Route::get('/student', 'Student\Auth\StudentLoginController@show')->name('student.dashboard');
+Route::get('/student', 'Student\Auth\StudentLoginController@show')->name('student.dashboard')->middleware('auth:student');
 
 Route::Post('/login/teacher', 'Student\Auth\StudentLoginController@authenticate')->name('loginStudent');
 
@@ -60,7 +60,7 @@ Route::Post('/login', 'Teacher\Auth\TeacherLoginController@authenticate')->name(
   
 
  // students form routes 
- Route::get('student/{form}','FormController@form')->name('showfrom');
+ Route::get('student/{form}','FormController@form')->name('showfrom')->middleware('auth:student');
  Route::get('/{post}','FormController@download')->name('download');
 
 

@@ -9,7 +9,10 @@ class LogoutController extends Controller
 {
     public function index(){
 
-        return Auth::logout();
+         Auth::logout();
+
+         return redirect()->route('login');
+
     }
     
 }
